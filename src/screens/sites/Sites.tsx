@@ -295,7 +295,9 @@ export default class Sites extends BaseAutoRefreshScreen<Props, State> {
           <Spinner style={style.spinner} color="grey" />
         ) : (
           <View style={style.content}>
-            <SimpleSearchComponent onChange={async (searchText) => this.search(searchText)} navigation={navigation} />
+            <View style={style.searchBar}>
+              <SimpleSearchComponent onChange={async (searchText) => this.search(searchText)} navigation={navigation} />
+            </View>
             <SitesFilters
               initialFilters={initialFilters}
               locationEnabled={this.locationEnabled}

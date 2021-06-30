@@ -15,9 +15,8 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
       height: '40@s',
       paddingLeft: '5@s',
       paddingRight: '5@s',
-      borderBottomWidth: 1,
-      borderBottomColor: commonColor.listBorderColor,
-      backgroundColor: commonColor.headerBgColor
+      borderRadius: '10@s',
+      backgroundColor: commonColor.listHeaderBgColor
     },
     inputField: {
       flex: 1,

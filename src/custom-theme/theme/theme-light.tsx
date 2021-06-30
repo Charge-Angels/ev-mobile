@@ -1,5 +1,4 @@
 import palette from './palette';
-import commonColor from '../../theme/variables/commonColor';
 
 // Dark theme
 export default {
@@ -11,6 +10,7 @@ export default {
   disabled: palette.disabled,
   backgroundHeader: palette.light,
   listBackgroundHeader: palette.disabled,
+  listItemSelected: '#BFBFBF',
   background: palette.light,
   borderColor: palette.dark,
   textColor: palette.primaryDark,

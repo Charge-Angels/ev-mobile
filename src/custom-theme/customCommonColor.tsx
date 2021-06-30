@@ -43,6 +43,7 @@ export const buildCommonColor = (currentTheme: ThemeDefinition) => ({
   brandLight: palette.light,
 
   listBorderColor: palette.disabledDark,
+  listItemSelected: currentTheme.listItemSelected,
   cardBorderColor: currentTheme.textColor,
 
   containerBgColor: currentTheme.background,

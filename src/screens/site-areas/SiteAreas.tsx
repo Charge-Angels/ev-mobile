@@ -2,7 +2,7 @@ import { DrawerActions } from '@react-navigation/native';
 import I18n from 'i18n-js';
 import { Container, Spinner, View } from 'native-base';
 import React from 'react';
-import { FlatList, Platform, RefreshControl, ScrollView } from 'react-native';
+import { Platform, ScrollView } from 'react-native';
 import { ClusterMap } from 'react-native-cluster-map';
 import { Location } from 'react-native-location';
 import { Marker, Region } from 'react-native-maps';
@@ -10,7 +10,7 @@ import Modal from 'react-native-modal';
 import { Modalize } from 'react-native-modalize';
 
 import HeaderComponent from '../../components/header/HeaderComponent';
-import ItemsList, { ItemsSeparatorType } from '../../components/list/ItemsList';
+import ItemsList from '../../components/list/ItemsList';
 import SimpleSearchComponent from '../../components/search/simple/SimpleSearchComponent';
 import SiteAreaComponent from '../../components/site-area/SiteAreaComponent';
 import ThemeManager from '../../custom-theme/ThemeManager';

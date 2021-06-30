@@ -146,7 +146,9 @@ export default class Cars extends BaseScreen<Props, State> {
           }}
           rightActionIcon={'menu'}
         />
-        <SimpleSearchComponent onChange={async (searchText) => this.search(searchText)} navigation={navigation} />
+        <View style={style.searchBar}>
+          <SimpleSearchComponent onChange={async (searchText) => this.search(searchText)} navigation={navigation} />
+        </View>
         {loading ? (
           <Spinner style={style.spinner} color="grey" />
         ) : (

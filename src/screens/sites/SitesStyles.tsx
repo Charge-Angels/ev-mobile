@@ -15,6 +15,9 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
     content: {
       flex: 1
     },
+    searchBar: {
+      marginVertical: '10@s'
+    },
     spinner: {
       flex: 1,
       backgroundColor: commonColor.containerBgColor

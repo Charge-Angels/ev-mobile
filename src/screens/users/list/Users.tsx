@@ -5,7 +5,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import HeaderComponent from '../../../components/header/HeaderComponent';
-import ItemsList, { ItemSelectionMode, ItemsSeparatorType } from '../../../components/list/ItemsList';
+import ItemsList, { ItemSelectionMode } from '../../../components/list/ItemsList';
 import SimpleSearchComponent from '../../../components/search/simple/SimpleSearchComponent';
 import UserComponent from '../../../components/user/UserComponent';
 import I18nManager from '../../../I18n/I18nManager';
@@ -34,10 +34,6 @@ export default class Users extends SelectableList<User> {
     isModal: false
   };
 
-  public static defaultProps = {
-    selectionMode: ItemSelectionMode.NONE,
-    isModal: false
-  };
   public state: State;
   public props: Props;
   private searchText: string;
@@ -66,7 +62,7 @@ export default class Users extends SelectableList<User> {
     await this.refresh();
   }
 
-  public async getUsers(searchText: string, skip: number, limit: number, onlyCount: boolean = false): Promise<DataResult<User>> {
+  public async getUsers(searchText: string, skip: number, limit: number): Promise<DataResult<User>> {
     try {
       const params = {
         Search: searchText,
@@ -168,7 +164,9 @@ export default class Users extends SelectableList<User> {
           <Spinner style={style.spinner} color="grey" />
         ) : (
           <View style={style.content}>
-            <SimpleSearchComponent onChange={async (searchText) => this.search(searchText)} navigation={navigation} />
+            <View style={style.searchBar}>
+              <SimpleSearchComponent onChange={async (searchText) => this.search(searchText)} navigation={navigation} />
+            </View>
             <ItemsList<User>
               ref={this.itemsListRef}
               selectionMode={selectionMode}
@@ -178,7 +176,7 @@ export default class Users extends SelectableList<User> {
               count={count}
               limit={limit}
               skip={skip}
-              renderItem={(item: User) => <UserComponent user={item} navigation={this.props.navigation} />}
+              renderItem={(item: User, selected: boolean) => <UserComponent user={item} selected={selected} navigation={this.props.navigation} />}
               refreshing={refreshing}
               manualRefresh={isModal ? null : this.manualRefresh}
               onEndReached={this.onEndScroll}

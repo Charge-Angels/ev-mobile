@@ -12,6 +12,9 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
       flex: 1,
       backgroundColor: commonColor.containerBgColor
     },
+    searchBar: {
+      marginVertical: '10@s'
+    },
     content: {
       flex: 1
     },

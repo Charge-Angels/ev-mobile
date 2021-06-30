@@ -14,7 +14,6 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
       height: '80@s',
       alignSelf: 'center',
       borderColor: 'transparent',
-      backgroundColor: commonColor.listHeaderBgColor,
       shadowColor: commonColor.cardShadowColor,
       shadowOffset: {
         width: 0,
@@ -22,14 +21,18 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
       },
       shadowOpacity: 0.23,
       shadowRadius: 3.62,
-      elevation: 11,
       marginBottom: '8@s'
+    },
+    selected: {
+      backgroundColor: commonColor.listItemSelected
+    },
+    unselected: {
+      backgroundColor: commonColor.listHeaderBgColor
     },
     userContent: {
       width: '100%',
       height: '100%',
       justifyContent: 'space-between',
-      backgroundColor: commonColor.listHeaderBgColor,
       flexDirection: 'row',
       margin: 0,
       flex: 1,
@@ -52,13 +55,10 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
       paddingLeft: '10@s',
       paddingRight: '15@s'
     },
-    selected: {
-      opacity: 0.5
-    },
     userContainer: {
       flex: 1,
       flexDirection: 'column',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     userFullnameStatusContainer: {
       flexDirection: 'row',

@@ -7,6 +7,7 @@ export default interface ThemeDefinition {
   backgroundHeader: string;
   background: string;
   listBackgroundHeader: string;
+  listItemSelected: string;
   borderColor: string;
   textColor: string;
   placeholderTextColor: string;

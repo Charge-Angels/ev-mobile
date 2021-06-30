@@ -11,8 +11,10 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
     modal: {
       backgroundColor: commonColor.containerBgColor,
       margin: 0,
-      marginTop: '100@s',
-      width: '100%'
+      marginTop: '20%',
+      width: '100%',
+      borderTopLeftRadius: '20@s',
+      borderTopRightRadius: '20@s'
     },
     modalContainer: {
       flexDirection: 'column',
@@ -22,10 +24,6 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
       width: '100%',
       flexDirection: 'column',
       alignItems: 'center',
-      borderBottomColor: commonColor.listBorderColor,
-      borderTopColor: commonColor.listBorderColor,
-      borderBottomWidth: 1,
-      borderTopWidth: 1,
       padding: '5@s'
     },
     modalTitle: {
@@ -41,9 +39,9 @@ export default function computeStyleSheet(): StyleSheet.NamedStyles<any> {
       justifyContent: 'space-evenly',
       height: '80@s',
       alignItems: 'center',
-      borderTopWidth: 1,
       paddingBottom: '20@s',
-      borderTopColor: commonColor.listBorderColor
+      borderTopColor: commonColor.listBorderColor,
+      borderTopWidth: 1
     },
     button: {
       marginTop: '15@s',
