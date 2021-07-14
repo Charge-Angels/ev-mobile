@@ -603,6 +603,18 @@ export default class CentralServerProvider {
     return result.data;
   }
 
+  public async softStopstopTransaction(transactionID: number): Promise<ActionResponse> {
+    this.debugMethod('softStopstopTransaction');
+    const result = await this.axiosInstance.put(
+      `${this.buildCentralRestServerServiceSecuredURL()}/${ServerAction.TRANSACTION_SOFT_STOP}`,
+      { ID: transactionID },
+      {
+        headers: this.buildSecuredHeaders()
+      }
+    );
+    return result.data;
+  }
+
   public async reset(chargingStationID: string, type: 'Soft' | 'Hard'): Promise<ActionResponse> {
     this.debugMethod('reset');
     const url = this.buildRestEndpointUrl(ServerRoute.REST_CHARGING_STATIONS_RESET, { id: chargingStationID });

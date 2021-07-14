@@ -297,17 +297,17 @@ export default class ChargingStationConnectorDetails extends BaseAutoRefreshScre
       // Disable the button
       this.setState({ buttonDisabled: true });
       // Start the Transaction
-      const status = await this.centralServerProvider.startTransaction(
+      const response = await this.centralServerProvider.startTransaction(
         chargingStation.id as string,
         connector.connectorId,
         userInfo.tagIDs[0]
       );
-      // Check
-      if (status && status.status === 'Accepted') {
+      if (response?.status === 'Accepted') {
         // Show message
         Message.showSuccess(I18n.t('details.accepted'));
         // Nb trials the button stays disabled
         this.setState({ startTransactionNbTrial: START_TRANSACTION_NB_TRIAL });
+        await this.refresh();
       } else {
         // Enable the button
         this.setState({ buttonDisabled: false });
@@ -346,13 +346,24 @@ export default class ChargingStationConnectorDetails extends BaseAutoRefreshScre
     try {
       // Disable button
       this.setState({ buttonDisabled: true });
-      // Stop the Transaction
-      const status = await this.centralServerProvider.stopTransaction(chargingStation.id as string, connector.currentTransactionID);
-      // Check
-      if (status && status.status === 'Accepted') {
-        Message.showSuccess(I18n.t('details.accepted'));
+      // Remote Stop the Transaction
+      if (connector.status !== ChargePointStatus.AVAILABLE) {
+        const response = await this.centralServerProvider.stopTransaction(chargingStation.id as string, connector.currentTransactionID);
+        if (response?.status === 'Accepted') {
+          Message.showSuccess(I18n.t('details.accepted'));
+          await this.refresh();
+        } else {
+          Message.showError(I18n.t('details.denied'));
+        }
+      // Soft Stop Transaction
       } else {
-        Message.showError(I18n.t('details.denied'));
+        const response = await this.centralServerProvider.softStopstopTransaction(connector.currentTransactionID);
+        if (response?.status === 'Invalid') {
+          Message.showError(I18n.t('details.denied'));
+        } else {
+          Message.showSuccess(I18n.t('details.accepted'));
+          await this.refresh();
+        }
       }
     } catch (error) {
       // Other common Error
